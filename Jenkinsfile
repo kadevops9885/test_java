@@ -14,7 +14,8 @@ pipeline{
         }
         stage('build'){
             steps{
-               sh 'mvn package'
+               sh 'mvn clean install'  // Build the code using Maven
+                sh 'mvn test'           // Run tests
             }
         }
     }
