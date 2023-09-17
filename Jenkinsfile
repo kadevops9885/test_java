@@ -15,7 +15,17 @@ pipeline{
         stage('build'){
             steps{
                sh 'mvn clean install'  // Build the code using Maven
-                sh 'mvn test'           // Run tests
+        stage('Terraform Init') {
+            steps {
+                sh 'terraform init'
+            }
+        }
+        stage('Terraform Apply') {
+            steps {
+                sh 'terraform apply -auto-approve'
+            }
+        }
+    }
             }
         }
     }
