@@ -17,9 +17,14 @@ pipeline{
                sh 'mvn clean install'  // Build the code using Maven
             }
         }
-             withCredentials([gitUsernamePassword(credentialsId: 'my-aws-credentials', gitToolName: 'Default')]) {
-                    // some block
-                       }
+         stage ('create aws ec2') {
+             steps {
+                withCredentials([gitUsernamePassword(credentialsId: 'my-aws-credentials', gitToolName: 'Default')]) {
+                    // Your steps that require credentials go here
+                    // For example, you can clone a Git repository using the stored credentials.
+                }
+            }
+        }
          stage ('Terraform Init') {
               steps {
                 sh 'terraform init'
