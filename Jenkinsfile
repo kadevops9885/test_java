@@ -19,12 +19,12 @@ pipeline{
              withCredentials([gitUsernamePassword(credentialsId: 'my-aws-credentials', gitToolName: 'Default')]) {
                     // some block
                        }
-        stage('Terraform Init') {
+           stage('Terraform Init') {
             steps {
                 sh 'terraform init'
             }
         }
-        stage('Terraform Apply') {
+          stage('Terraform Apply') {
             steps {
                 sh 'terraform apply -auto-approve'
             }
