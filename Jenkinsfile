@@ -15,6 +15,10 @@ pipeline{
         stage('build'){
             steps{
                sh 'mvn clean install'  // Build the code using Maven
+
+             withCredentials([gitUsernamePassword(credentialsId: 'my-aws-credentials', gitToolName: 'Default')]) {
+                    // some block
+                       }
         stage('Terraform Init') {
             steps {
                 sh 'terraform init'
@@ -27,6 +31,8 @@ pipeline{
         }
     }
             
-        
+        }
+    }
+}
     
 
