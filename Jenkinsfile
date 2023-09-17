@@ -23,7 +23,7 @@ pipeline{
                     // Your steps that require credentials go here
                     // For example, you can clone a Git repository using the stored credentials.
                 }
-            stage('Navigate to Terraform Directory') {
+            stage ('Navigate to Terraform Directory') {
                steps {
                 // Change directory to the path where your Terraform configuration files are located
                    dir('test_java') {
