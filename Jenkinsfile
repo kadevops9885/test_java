@@ -17,25 +17,25 @@ pipeline{
                sh 'mvn clean install'  // Build the code using Maven
             }
         }
-         stage('create aws ec2') {
+         stage ('create aws ec2') {
             steps {
                 withCredentials([gitUsernamePassword(credentialsId: 'my-aws-credentials', gitToolName: 'Default')]) {
                     // Your steps that require credentials go here
                     // For example, you can clone a Git repository using the stored credentials.
                 }
-        stage('Navigate to Terraform Directory') {
+        stage ('Navigate to Terraform Directory') {
             steps {
                 // Change directory to the path where your Terraform configuration files are located
                 dir('test_java') {
             }
         }
             }
-        stage('Terraform Init') {
+        stage ('Terraform Init') {
             steps {
                sh 'terraform init'
             }
         }
-        stage('Terraform Apply') {
+        stage ('Terraform Apply') {
             steps {
                sh 'terraform apply -auto-approve'
             }
