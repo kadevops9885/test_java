@@ -29,6 +29,7 @@ pipeline{
                    dir('test_java') {
             }
         }
+            }
          stage ('Terraform Init') {
               steps {
                 sh 'terraform init'
