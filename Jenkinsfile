@@ -26,13 +26,7 @@ pipeline{
                 }
 			}
 		}
-        stage('Navigate to Terraform Directory') {
-            steps {
-                // Change directory to the path where your Terraform configuration files are located
-                dir('test_java') {
-               }
-            }
-        }
+      
         stage('Terraform Init') {
             steps {
                sh 'terraform init'
